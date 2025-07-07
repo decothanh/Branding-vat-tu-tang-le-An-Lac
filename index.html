@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Nhận Diện Thương Hiệu - An Lạc</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+        }
+        .lotus-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffd700' fill-opacity='0.05' fill-rule='evenodd'%3E%3Cpath d='M20 20c0-8.837-7.163-16-16-16s-16 7.163-16 16 7.163 16 16 16 16-7.163 16-16zm16 0c0-8.837-7.163-16-16-16s-16 7.163-16 16 7.163 16 16 16 16-7.163 16-16z'/%3E%3C/g%3E%3C/svg%3E");
+        }
+        .section-divider {
+            border-bottom: 3px solid #FFD700;
+            width: 80px;
+            margin: 0 auto 2rem;
+        }
+        .brand-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .color-swatch {
+            height: 80px;
+            border-radius: 8px;
+            border: 2px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        .color-swatch::after {
+            content: attr(data-color);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255,255,255,0.9);
+            padding: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+        .image-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .logo-showcase {
+            background: linear-gradient(45deg, #f9fafb, #ffffff);
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+        .application-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .print-optimized {
+            width: 100%;
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .break-inside-avoid {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 lotus-pattern">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-5xl font-bold mb-4">AN LẠC</h1>
+            <p class="text-xl opacity-90 mb-2">Kho vật tư tang lễ</p>
+            <div class="section-divider bg-white"></div>
+            <p class="text-lg opacity-80">Bộ nhận diện thương hiệu hoàn chỉnh</p>
+        </div>
+    </header>
+
+    <!-- Brand Overview -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Tổng quan thương hiệu</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    An Lạc là thương hiệu chuyên cung cấp vật tư tang lễ với biểu tượng hoa sen thiêng liêng, 
+                    thể hiện sự thanh tịnh, bình an và tôn kính trong những khoảnh khắc thiêng liêng nhất của cuộc đời.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="stats-card">
+                    <i class="fas fa-lotus text-4xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Biểu tượng</h3>
+                    <p class="opacity-90">Hoa sen - Biểu tượng của sự thanh tịnh và bình an</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-palette text-4xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Màu sắc</h3>
+                    <p class="opacity-90">Vàng và đen - Tôn kính và trang nghiêm</p>
+                </div>
+                <div class="stats-card">
+                    <i class="fas fa-heart text-4xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-2xl font-bold mb-2">Giá trị</h3>
+                    <p class="opacity-90">Phục vụ với lòng tôn kính và trách nhiệm</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Logo Variations -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-star text-yellow-500 mr-3"></i>
+                    Phiên bản Logo
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600 text-lg">Các phiên bản logo được thiết kế để phù hợp với mọi ứng dụng</p>
+            </div>
+
+            <div class="break-inside-avoid mb-12">
+                <div class="image-container">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/910a72c5-5ce3-475e-a6f9-98f5306714ee" 
+                         alt="Các phiên bản logo An Lạc" 
+                         class="w-full h-auto">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-sun text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Logo nguyên bản</h3>
+                        <p class="text-gray-600">Phiên bản chính thức với màu vàng truyền thống</p>
+                    </div>
+                </div>
+                
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-moon text-4xl text-gray-800 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Logo âm bản</h3>
+                        <p class="text-gray-600">Phiên bản trắng sử dụng trên nền tối</p>
+                    </div>
+                </div>
+                
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-circle text-4xl text-gray-800 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Logo một màu</h3>
+                        <p class="text-gray-600">Phiên bản đen/trắng cho in ấn đơn giản</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="logo-showcase text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Icon Logo</h4>
+                    <p class="text-gray-600 text-sm">Chỉ biểu tượng hoa sen "An Lạc"</p>
+                </div>
+                
+                <div class="logo-showcase text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Text Logo</h4>
+                    <p class="text-gray-600 text-sm">"Kho vật tư tang lễ - An Lạc"</p>
+                </div>
+                
+                <div class="logo-showcase text-center">
+                    <h4 class="text-lg font-bold text-gray-800 mb-4">Logo kết hợp</h4>
+                    <p class="text-gray-600 text-sm">Icon + Text hoàn chỉnh</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Color Palette -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-palette text-yellow-500 mr-3"></i>
+                    Bảng màu chủ đạo
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600 text-lg">Hệ thống màu sắc thể hiện sự trang nghiêm và tôn kính</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Màu Chính</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="color-swatch gradient-bg mb-4" data-color="#FFD700"></div>
+                            <h4 class="font-bold text-gray-800">Vàng Chính</h4>
+                            <p class="text-sm text-gray-600">#FFD700</p>
+                        </div>
+                        <div>
+                            <div class="color-swatch bg-yellow-600 mb-4" data-color="#FFA500"></div>
+                            <h4 class="font-bold text-gray-800">Vàng Đậm</h4>
+                            <p class="text-sm text-gray-600">#FFA500</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Màu Phụ</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <div class="color-swatch bg-black mb-4" data-color="#000000"></div>
+                            <h4 class="font-bold text-gray-800">Đen Chính</h4>
+                            <p class="text-sm text-gray-600">#000000</p>
+                        </div>
+                        <div>
+                            <div class="color-swatch bg-gray-700 mb-4" data-color="#374151"></div>
+                            <h4 class="font-bold text-gray-800">Xám Đậm</h4>
+                            <p class="text-sm text-gray-600">#374151</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="break-inside-avoid">
+                <div class="image-container">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/a70781f3-3a05-4f57-a774-5fa95b444228" 
+                         alt="Bảng màu và ứng dụng thương hiệu An Lạc" 
+                         class="w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Applications -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-tools text-yellow-500 mr-3"></i>
+                    Ứng dụng thiết kế
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600 text-lg">Các ứng dụng thực tế của bộ nhận diện thương hiệu</p>
+            </div>
+
+            <div class="break-inside-avoid mb-12">
+                <div class="image-container">
+                    <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/b7bbd872-be6c-49c7-812d-83e9cfdc6181" 
+                         alt="Ứng dụng thương hiệu An Lạc" 
+                         class="w-full h-auto">
+                </div>
+            </div>
+
+            <div class="application-grid">
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-store text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Bảng hiệu cửa hàng</h3>
+                        <p class="text-gray-600 mb-4">Thiết kế bảng hiệu với ánh sáng LED tạo điểm nhấn</p>
+                        <ul class="text-sm text-gray-600 text-left">
+                            <li>• Logo hoa sen nổi bật</li>
+                            <li>• Chữ "An Lạc" sáng đèn</li>
+                            <li>• Thông tin liên hệ rõ ràng</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-wall-brick text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Decal dán tường</h3>
+                        <p class="text-gray-600 mb-4">Thiết kế decal trang trí không gian văn phòng</p>
+                        <ul class="text-sm text-gray-600 text-left">
+                            <li>• Chất liệu vinyl cao cấp</li>
+                            <li>• Dễ dàng tháo lắp</li>
+                            <li>• Màu sắc bền lâu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-id-card text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Thiết kế văn phòng phẩm</h3>
+                        <p class="text-gray-600 mb-4">Name card, letterhead, phong bì thương hiệu</p>
+                        <ul class="text-sm text-gray-600 text-left">
+                            <li>• Thiết kế nhất quán</li>
+                            <li>• Chất liệu cao cấp</li>
+                            <li>• Thể hiện tính chuyên nghiệp</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-tshirt text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Đồng phục nhân viên</h3>
+                        <p class="text-gray-600 mb-4">Áo đồng phục thêu logo chuyên nghiệp</p>
+                        <ul class="text-sm text-gray-600 text-left">
+                            <li>• Logo thêu tinh tế</li>
+                            <li>• Màu sắc trang trọng</li>
+                            <li>• Chất liệu thoáng mát</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-box text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Bao bì sản phẩm</h3>
+                        <p class="text-gray-600 mb-4">Thiết kế bao bì với họa tiết hoa sen tinh tế</p>
+                        <ul class="text-sm text-gray-600 text-left">
+                            <li>• Họa tiết hoa sen nhẹ nhàng</li>
+                            <li>• Thông tin sản phẩm đầy đủ</li>
+                            <li>• Bảo vệ sản phẩm tốt</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="brand-card bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-center">
+                        <i class="fas fa-car text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Phương tiện vận chuyển</h3>
+                        <p class="text-gray-600 mb-4">Thiết kế xe tải với thương hiệu An Lạc</p>
+                        <ul class="text-sm text-gray-600 text-left">
+                            <li>• Decal chống nước</li>
+                            <li>• Thông tin liên hệ rõ ràng</li>
+                            <li>• Tạo ấn tượng mạnh</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brand Guidelines -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-book text-yellow-500 mr-3"></i>
+                    Hướng dẫn sử dụng thương hiệu
+                </h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600 text-lg">Các nguyên tắc cơ bản khi sử dụng bộ nhận diện thương hiệu</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="break-inside-avoid">
+                    <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-green-800 mb-4">
+                            <i class="fas fa-check-circle mr-2"></i>
+                            Nên làm
+                        </h3>
+                        <ul class="text-green-700 space-y-2">
+                            <li>• Sử dụng logo với kích thước tối thiểu 24px</li>
+                            <li>• Đảm bảo khoảng cách trống xung quanh logo</li>
+                            <li>• Sử dụng màu sắc chính xác theo bảng màu</li>
+                            <li>• Duy trì tỷ lệ logo khi thay đổi kích thước</li>
+                            <li>• Sử dụng font chữ chính thức trong văn bản</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="break-inside-avoid">
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+                        <h3 class="text-xl font-bold text-red-800 mb-4">
+                            <i class="fas fa-times-circle mr-2"></i>
+                            Không nên làm
+                        </h3>
+                        <ul class="text-red-700 space-y-2">
+                            <li>• Biến dạng, xoay hoặc nghiêng logo</li>
+                            <li>• Thay đổi màu sắc tùy ý</li>
+                            <li>• Sử dụng logo trên nền có độ tương phản thấp</li>
+                            <li>• Đặt logo quá gần với các yếu tố khác</li>
+                            <li>• Tạo hiệu ứng 3D hoặc đổ bóng cho logo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold mb-4">AN LẠC</h3>
+                <p class="text-lg opacity-90 mb-4">Kho vật tư tang lễ</p>
+                <p class="opacity-75 mb-6">Phục vụ với lòng tôn kính và trách nhiệm</p>
+                
+                <div class="flex justify-center space-x-6 mb-6">
+                    <div class="flex items-center">
+                        <i class="fas fa-phone mr-2"></i>
+                        <span>0123 456 789</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-envelope mr-2"></i>
+                        <span>info@anlac.com</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-map-marker-alt mr-2"></i>
+                        <span>123 Đường ABC, Quận XYZ</span>
+                    </div>
+                </div>
+                
+                <div class="border-t border-white border-opacity-20 pt-6">
+                    <p class="text-sm opacity-75">
+                        © 2024 An Lạc. Bảo lưu mọi quyền. Bộ nhận diện thương hiệu được thiết kế chuyên nghiệp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
