@@ -6,63 +6,64 @@
     <title>Bộ Nhận Diện Thương Hiệu - An Lạc Việt</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
         }
         
         .brand-gold {
             color: #D4AF37;
         }
         
-        .bg-brand-gold {
+        .brand-bg-gold {
             background-color: #D4AF37;
         }
         
-        .border-brand-gold {
-            border-color: #D4AF37;
+        .brand-bg-dark {
+            background-color: #1a1a1a;
         }
         
-        .hover-gold:hover {
-            color: #D4AF37;
-            transition: all 0.3s ease;
+        .serif-font {
+            font-family: 'Playfair Display', serif;
         }
         
-        .modal {
-            display: none;
+        .lightbox {
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.9);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
         
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 1200px;
-            max-height: 80vh;
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
             object-fit: contain;
         }
         
-        .close {
+        .lightbox-close {
             position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
+            top: 20px;
+            right: 30px;
             font-size: 40px;
-            font-weight: bold;
+            color: white;
             cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #D4AF37;
+            z-index: 1001;
         }
         
         .thumbnail {
@@ -75,559 +76,702 @@
         }
         
         .section-divider {
-            background: linear-gradient(90deg, transparent, #D4AF37, transparent);
             height: 2px;
-            margin: 4rem 0;
+            background: linear-gradient(to right, #D4AF37, transparent);
+            margin: 3rem 0;
         }
         
-        .card {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            border: 1px solid #333;
-            transition: all 0.3s ease;
+        .hero-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 4rem 0;
         }
         
-        .card:hover {
-            border-color: #D4AF37;
-            transform: translateY(-2px);
+        .logo-showcase {
+            background: #1a1a1a;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .cultural-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 3rem 0;
+        }
+        
+        .meaning-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin: 1rem 0;
+        }
+        
+        .icon-feature {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4AF37, #B8941F);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 2rem;
+        }
+        
+        .grid-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .logo-version {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #e5e7eb;
         }
         
         .nav-link {
+            color: #6b7280;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
             transition: all 0.3s ease;
         }
         
         .nav-link:hover {
+            background: #f3f4f6;
             color: #D4AF37;
-            transform: translateY(-2px);
         }
         
-        @media print {
-            .modal {
-                display: none !important;
+        .bird-symbol {
+            font-size: 3rem;
+            color: #D4AF37;
+            margin: 1rem 0;
+        }
+        
+        .philosophy-box {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .color-swatch {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        .golden-swatch {
+            background: #D4AF37;
+        }
+        
+        .black-swatch {
+            background: #1a1a1a;
+        }
+        
+        .white-swatch {
+            background: white;
+            color: #333;
+            border: 2px solid #e5e7eb;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 2rem 0;
             }
             
-            body {
-                background-color: white !important;
-                color: black !important;
+            .color-palette {
+                flex-wrap: wrap;
             }
             
-            .card {
-                background: white !important;
-                border: 1px solid #ccc !important;
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
-    <!-- Modal for high-quality images -->
-    <div id="imageModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
-    <!-- Header -->
-    <header class="bg-black border-b-2 border-brand-gold sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <img src="https://page1.genspark.site/v1/base64_upload/3f3a07c0062f775247dfea39136ac7e4" alt="An Lạc Việt Logo" class="h-12 w-auto">
-                    <div>
-                        <h1 class="text-2xl font-bold brand-gold">An Lạc Việt</h1>
-                        <p class="text-sm text-gray-400">Bộ Nhận Diện Thương Hiệu</p>
-                    </div>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-sticky">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold brand-gold serif-font">An Lạc Việt</h1>
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="#overview" class="nav-link text-gray-300 hover:text-gold">Tổng quan</a>
-                    <a href="#logo-versions" class="nav-link text-gray-300 hover:text-gold">Phiên bản Logo</a>
-                    <a href="#variations" class="nav-link text-gray-300 hover:text-gold">Biến thể</a>
-                    <a href="#applications" class="nav-link text-gray-300 hover:text-gold">Ứng dụng</a>
-                </nav>
+                <div class="hidden md:flex space-x-4">
+                    <a href="#intro" class="nav-link">Giới thiệu</a>
+                    <a href="#meaning" class="nav-link">Ý nghĩa</a>
+                    <a href="#logo" class="nav-link">Logo</a>
+                    <a href="#variants" class="nav-link">Biến thể</a>
+                    <a href="#applications" class="nav-link">Ứng dụng</a>
+                    <a href="#guidelines" class="nav-link">Quy chuẩn</a>
+                </div>
             </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-6 py-8">
-        <!-- Overview Section -->
-        <section id="overview" class="mb-16">
+    <!-- Hero Section -->
+    <section id="intro" class="hero-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold serif-font mb-4">
+                    Bộ Nhận Diện Thương Hiệu
+                </h1>
+                <h2 class="text-2xl md:text-3xl brand-gold serif-font mb-6">
+                    An Lạc Việt
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Kho Vật Tư Tang Lễ - Đồng hành cùng gia đình trong những giây phút khó khăn
+                </p>
+                <div class="logo-showcase">
+                    <img src="https://page1.genspark.site/v1/base64_upload/3f3a07c0062f775247dfea39136ac7e4" 
+                         alt="Logo An Lạc Việt" 
+                         class="mx-auto max-w-md w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural Meaning Section -->
+    <section id="meaning" class="cultural-section">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-4xl font-bold brand-gold mb-4">Bộ Nhận Diện Thương Hiệu</h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Hệ thống nhận diện thương hiệu toàn diện cho An Lạc Việt - Kho Vật Tư Tang Lễ, 
-                    thể hiện sự trang trọng, uy tín và tính nhân văn trong lĩnh vực dịch vụ tang lễ.
+                <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">
+                    Ý Nghĩa Thương Hiệu
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    "An Lạc Việt" mang trong mình biểu tượng thiêng liêng của cánh chim Lạc Việt, 
+                    biểu trưng cho sự bình an và hạnh phúc trong văn hóa Việt Nam
                 </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="card rounded-lg p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-palette brand-gold text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">Màu sắc chủ đạo</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="meaning-card text-center">
+                    <div class="icon-feature">
+                        <i class="fas fa-dove"></i>
                     </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="text-center">
-                            <div class="w-full h-20 bg-brand-gold rounded mb-2"></div>
-                            <p class="text-sm">Vàng Hoàng Gia</p>
-                            <p class="text-xs text-gray-400">#D4AF37</p>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-full h-20 bg-black border border-gray-600 rounded mb-2"></div>
-                            <p class="text-sm">Đen Trang Trọng</p>
-                            <p class="text-xs text-gray-400">#000000</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold mb-3 serif-font">Cánh Chim Lạc Việt</h3>
+                    <p class="text-gray-600">
+                        Biểu tượng của sự tự do, bình an và linh thiêng trong truyền thuyết Việt Nam cổ đại
+                    </p>
                 </div>
 
-                <div class="card rounded-lg p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-font brand-gold text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">Typography</h3>
+                <div class="meaning-card text-center">
+                    <div class="icon-feature">
+                        <i class="fas fa-heart"></i>
                     </div>
-                    <div class="space-y-3">
-                        <div>
-                            <p class="text-sm text-gray-400">Chữ chính</p>
-                            <p class="text-lg font-bold">Font Serif - Trang trọng, cổ điển</p>
-                        </div>
-                        <div>
-                            <p class="text-sm text-gray-400">Đặc điểm</p>
-                            <p class="text-sm">Thanh thoát, dễ đọc, thể hiện sự uy tín</p>
-                        </div>
+                    <h3 class="text-xl font-bold mb-3 serif-font">An Lạc</h3>
+                    <p class="text-gray-600">
+                        Mang đến sự bình yên, an nhiên và hạnh phúc cho người thân trong những giây phút cuối
+                    </p>
+                </div>
+
+                <div class="meaning-card text-center">
+                    <div class="icon-feature">
+                        <i class="fas fa-flag"></i>
                     </div>
+                    <h3 class="text-xl font-bold mb-3 serif-font">Việt Nam</h3>
+                    <p class="text-gray-600">
+                        Thể hiện bản sắc dân tộc, tôn trọng truyền thống và phong tục tang lễ Việt Nam
+                    </p>
                 </div>
             </div>
 
-            <div class="card rounded-lg p-6">
-                <div class="flex items-center mb-4">
-                    <i class="fas fa-lightbulb brand-gold text-2xl mr-3"></i>
-                    <h3 class="text-xl font-semibold">Ý nghĩa thương hiệu</h3>
+            <div class="philosophy-box">
+                <div class="text-center mb-8">
+                    <div class="bird-symbol">
+                        <i class="fas fa-feather-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 serif-font">Triết Lý Thương Hiệu</h3>
                 </div>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="text-center">
-                        <i class="fas fa-heart text-3xl brand-gold mb-3"></i>
-                        <h4 class="font-semibold mb-2">Nhân văn</h4>
-                        <p class="text-sm text-gray-400">Thể hiện sự chia sẻ, đồng cảm với gia đình trong những giây phút khó khăn</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3 brand-gold">Sứ Mệnh</h4>
+                        <p class="text-gray-300">
+                            Như cánh chim Lạc Việt bay lên trời cao, chúng tôi mong muốn đưa những người thân yêu 
+                            đến nơi an nghỉ với sự trang trọng và bình an nhất.
+                        </p>
                     </div>
-                    <div class="text-center">
-                        <i class="fas fa-shield-alt text-3xl brand-gold mb-3"></i>
-                        <h4 class="font-semibold mb-2">Uy tín</h4>
-                        <p class="text-sm text-gray-400">Xây dựng niềm tin thông qua chất lượng dịch vụ và sự chuyên nghiệp</p>
-                    </div>
-                    <div class="text-center">
-                        <i class="fas fa-dove text-3xl brand-gold mb-3"></i>
-                        <h4 class="font-semibold mb-2">An lạc</h4>
-                        <p class="text-sm text-gray-400">Mang lại sự bình an, thanh tịnh cho người đã khuất và gia quyến</p>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-3 brand-gold">Tầm Nhìn</h4>
+                        <p class="text-gray-300">
+                            Trở thành thương hiệu hàng đầu trong lĩnh vực tang lễ, mang đến sự an ủi và 
+                            hỗ trợ tận tâm cho các gia đình Việt Nam.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
-
-        <!-- Logo Versions -->
-        <section id="logo-versions" class="mb-16">
+    <!-- Logo Versions Section -->
+    <section id="logo" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold brand-gold mb-4">Các Phiên Bản Logo</h2>
-                <p class="text-lg text-gray-300">Logo chính thức và các phiên bản ứng dụng</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">
+                    Các Phiên Bản Logo
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Logo được thiết kế với nhiều phiên bản khác nhau để phù hợp với mọi môi trường sử dụng
+                </p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="card rounded-lg p-6 text-center">
-                    <h3 class="text-xl font-semibold mb-4">Logo Nguyên Bản</h3>
-                    <div class="bg-black rounded-lg p-4 mb-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="logo-version">
+                    <h3 class="text-lg font-semibold mb-4">Logo Nguyên Bản</h3>
+                    <div class="bg-black p-6 rounded-lg">
                         <img src="https://page1.genspark.site/v1/base64_upload/3f3a07c0062f775247dfea39136ac7e4" 
-                             alt="Logo Nguyên Bản" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo nguyên bản" 
+                             class="mx-auto max-w-xs w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <p class="text-sm text-gray-400">Phiên bản chính thức - Vàng trên nền đen</p>
+                    <p class="text-sm text-gray-600 mt-2">Màu vàng trên nền đen - Phiên bản chính</p>
                 </div>
 
-                <div class="card rounded-lg p-6 text-center">
-                    <h3 class="text-xl font-semibold mb-4">Logo Âm Bản</h3>
-                    <div class="bg-white rounded-lg p-4 mb-4">
-                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/7ccfa2d7-f7cf-4bcc-b71a-550cb3efcb53" 
-                             alt="Logo Âm Bản" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
-                    </div>
-                    <p class="text-sm text-gray-400">Phiên bản đảo ngược - Đen trên nền vàng</p>
-                </div>
-
-                <div class="card rounded-lg p-6 text-center">
-                    <h3 class="text-xl font-semibold mb-4">Logo Đơn Sắc</h3>
-                    <div class="bg-black rounded-lg p-4 mb-4">
+                <div class="logo-version">
+                    <h3 class="text-lg font-semibold mb-4">Logo Âm Bản</h3>
+                    <div class="bg-black p-6 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/c0c3ee25-1a3b-4cdc-ae8f-dd931e3632cd" 
-                             alt="Logo Đơn Sắc" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo âm bản" 
+                             class="mx-auto max-w-xs w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <p class="text-sm text-gray-400">Phiên bản đơn sắc - Trắng trên nền đen</p>
+                    <p class="text-sm text-gray-600 mt-2">Chữ trắng trên nền đen - Phiên bản tối giản</p>
+                </div>
+
+                <div class="logo-version">
+                    <h3 class="text-lg font-semibold mb-4">Logo Đảo Ngược</h3>
+                    <div class="bg-yellow-400 p-6 rounded-lg">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/7ccfa2d7-f7cf-4bcc-b71a-550cb3efcb53" 
+                             alt="Logo đảo ngược" 
+                             class="mx-auto max-w-xs w-full thumbnail"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Chữ đen trên nền vàng - Sử dụng trên nền sáng</p>
+                </div>
+
+                <div class="logo-version">
+                    <h3 class="text-lg font-semibold mb-4">Logo Đơn Sắc</h3>
+                    <div class="bg-gray-100 p-6 rounded-lg">
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/c0c3ee25-1a3b-4cdc-ae8f-dd931e3632cd" 
+                             alt="Logo đơn sắc" 
+                             class="mx-auto max-w-xs w-full thumbnail"
+                             onclick="openLightbox(this.src)">
+                    </div>
+                    <p class="text-sm text-gray-600 mt-2">Phiên bản đơn sắc - In ấn và fax</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-        <!-- Logo Variations -->
-        <section id="variations" class="mb-16">
+    <!-- Logo Variants Section -->
+    <section id="variants" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold brand-gold mb-4">Biến Thể Logo</h2>
-                <p class="text-lg text-gray-300">Các biến thể đa dạng cho những ứng dụng khác nhau</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">
+                    Biến Thể Logo
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Các biến thể sáng tạo của logo để phù hợp với những mục đích sử dụng đặc biệt
+                </p>
             </div>
 
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="card rounded-lg p-4">
-                    <div class="bg-black rounded-lg p-4 mb-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="grid-item">
+                    <h3 class="text-lg font-semibold mb-3">Horizontal với Hoa Sen</h3>
+                    <div class="bg-black p-4 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/d71e6df7-f184-4cf0-99a5-827383e7ff63" 
-                             alt="Logo Horizontal với Hoa Sen" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo horizontal" 
+                             class="w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <h4 class="font-semibold text-sm">Horizontal với Hoa Sen</h4>
-                    <p class="text-xs text-gray-400">Biểu tượng hoa sen - Thanh tịnh, bình an</p>
+                    <p class="text-sm text-gray-600 mt-2">Phù hợp cho header website, biển quảng cáo</p>
                 </div>
 
-                <div class="card rounded-lg p-4">
-                    <div class="bg-black rounded-lg p-4 mb-3">
+                <div class="grid-item">
+                    <h3 class="text-lg font-semibold mb-3">Circular Badge</h3>
+                    <div class="bg-black p-4 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/182f89ea-b4a0-4f3a-a5a0-126b44705813" 
-                             alt="Logo Circular" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo circular" 
+                             class="w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <h4 class="font-semibold text-sm">Circular Design</h4>
-                    <p class="text-xs text-gray-400">Thiết kế tròn với viền trang trí cổ điển</p>
+                    <p class="text-sm text-gray-600 mt-2">Stamp, con dấu, avatar</p>
                 </div>
 
-                <div class="card rounded-lg p-4">
-                    <div class="bg-black rounded-lg p-4 mb-3">
+                <div class="grid-item">
+                    <h3 class="text-lg font-semibold mb-3">Gradient với Cây Tre</h3>
+                    <div class="bg-black p-4 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/6198741d-78c0-4c81-9d19-768dd0a6997a" 
-                             alt="Logo Gradient với Cây Tre" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo gradient" 
+                             class="w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <h4 class="font-semibold text-sm">Gradient với Cây Tre</h4>
-                    <p class="text-xs text-gray-400">Gradient vàng với biểu tượng cây tre</p>
+                    <p class="text-sm text-gray-600 mt-2">Thiết kế cao cấp, branding materials</p>
                 </div>
 
-                <div class="card rounded-lg p-4">
-                    <div class="bg-black rounded-lg p-4 mb-3">
+                <div class="grid-item">
+                    <h3 class="text-lg font-semibold mb-3">Badge với Rồng Việt</h3>
+                    <div class="bg-black p-4 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/89edd81c-04ab-4fbc-80d5-116fd613f6f8" 
-                             alt="Logo Badge với Rồng" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo badge" 
+                             class="w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <h4 class="font-semibold text-sm">Badge với Rồng Việt</h4>
-                    <p class="text-xs text-gray-400">Phong cách emblem với rồng Việt Nam</p>
+                    <p class="text-sm text-gray-600 mt-2">Giấy chứng nhận, award, danh thiếp cao cấp</p>
                 </div>
 
-                <div class="card rounded-lg p-4">
-                    <div class="bg-black rounded-lg p-4 mb-3">
+                <div class="grid-item">
+                    <h3 class="text-lg font-semibold mb-3">Vertical với Hoa Cúc</h3>
+                    <div class="bg-black p-4 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/9cb1421c-53aa-4cea-9e94-9c147032b8f0" 
-                             alt="Logo Vertical với Hoa Cúc" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo vertical" 
+                             class="w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <h4 class="font-semibold text-sm">Vertical với Hoa Cúc</h4>
-                    <p class="text-xs text-gray-400">Bố cục dọc với hoa cúc truyền thống</p>
+                    <p class="text-sm text-gray-600 mt-2">Banner dọc, poster, rollup</p>
                 </div>
 
-                <div class="card rounded-lg p-4">
-                    <div class="bg-black rounded-lg p-4 mb-3">
+                <div class="grid-item">
+                    <h3 class="text-lg font-semibold mb-3">Simplified</h3>
+                    <div class="bg-black p-4 rounded-lg">
                         <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/22ffa8da-37bc-4243-8ac1-b509241aa088" 
-                             alt="Logo Simplified" 
-                             class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                             onclick="openModal(this.src)">
+                             alt="Logo simplified" 
+                             class="w-full thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-                    <h4 class="font-semibold text-sm">Simplified</h4>
-                    <p class="text-xs text-gray-400">Phiên bản đơn giản cho watermark</p>
+                    <p class="text-sm text-gray-600 mt-2">Watermark, favicon, ứng dụng kích thước nhỏ</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-        <!-- Brand Applications -->
-        <section id="applications" class="mb-16">
+    <!-- Brand Applications Section -->
+    <section id="applications" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold brand-gold mb-4">Ứng Dụng Thương Hiệu</h2>
-                <p class="text-lg text-gray-300">Triển khai thương hiệu trên các phương tiện truyền thông</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">
+                    Ứng Dụng Thương Hiệu
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Các ứng dụng thực tế của logo trong hoạt động kinh doanh
+                </p>
             </div>
 
             <!-- Stationery -->
             <div class="mb-12">
-                <h3 class="text-2xl font-semibold brand-gold mb-6">
-                    <i class="fas fa-file-alt mr-2"></i>
-                    Văn phòng phẩm
-                </h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-gray-100 rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/cbce261b-b7db-41ea-a8da-10d74fd62201" 
-                                 alt="Danh thiếp" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Danh thiếp</h4>
-                        <p class="text-xs text-gray-400">Business card chuyên nghiệp</p>
+                <h3 class="text-2xl font-bold mb-6 serif-font">Văn Phòng Phẩm</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Danh Thiếp</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/cbce261b-b7db-41ea-a8da-10d74fd62201" 
+                             alt="Business Card" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-white rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/3c0cef6e-d40a-41b4-befd-9fc8d383cb18" 
-                                 alt="Letterhead" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Letterhead</h4>
-                        <p class="text-xs text-gray-400">Tiêu đề thư chính thức</p>
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Letterhead</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/3c0cef6e-d40a-41b4-befd-9fc8d383cb18" 
+                             alt="Letterhead" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-gray-100 rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/4451c764-9cae-4ca8-9d16-67c131f76ba6" 
-                                 alt="Bao thư" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Bao thư</h4>
-                        <p class="text-xs text-gray-400">Envelope với logo</p>
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Bao Thư</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/4451c764-9cae-4ca8-9d16-67c131f76ba6" 
+                             alt="Envelope" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
                 </div>
             </div>
 
             <!-- Marketing Materials -->
             <div class="mb-12">
-                <h3 class="text-2xl font-semibold brand-gold mb-6">
-                    <i class="fas fa-bullhorn mr-2"></i>
-                    Marketing & Quảng cáo
-                </h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-black rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/21e28932-0a3f-481b-8b9a-835c8c7ea7f3" 
-                                 alt="Brochure" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Brochure</h4>
-                        <p class="text-xs text-gray-400">Tờ rơi giới thiệu dịch vụ</p>
+                <h3 class="text-2xl font-bold mb-6 serif-font">Vật Liệu Marketing</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Brochure</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/21e28932-0a3f-481b-8b9a-835c8c7ea7f3" 
+                             alt="Brochure" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-black rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/94d39618-6efc-4c30-9201-71e3834ea8d5" 
-                                 alt="Banner" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Banner</h4>
-                        <p class="text-xs text-gray-400">Poster quảng cáo</p>
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Banner Quảng Cáo</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/94d39618-6efc-4c30-9201-71e3834ea8d5" 
+                             alt="Banner" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-black rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/8d11ef3e-8efb-46e9-b895-b5c35ea017db" 
-                                 alt="Social Media" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Social Media</h4>
-                        <p class="text-xs text-gray-400">Template mạng xã hội</p>
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Social Media</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/8d11ef3e-8efb-46e9-b895-b5c35ea017db" 
+                             alt="Social Media" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
                 </div>
             </div>
 
-            <!-- Digital & Physical -->
+            <!-- Signage & Digital -->
             <div class="mb-12">
-                <h3 class="text-2xl font-semibold brand-gold mb-6">
-                    <i class="fas fa-laptop mr-2"></i>
-                    Digital & Vật lý
-                </h3>
-                <div class="grid md:grid-cols-4 gap-6">
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-black rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/76c5154c-fd82-42b9-9e58-1d8a6ba0c1f0" 
-                                 alt="Website Header" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Website Header</h4>
-                        <p class="text-xs text-gray-400">Header trang web</p>
+                <h3 class="text-2xl font-bold mb-6 serif-font">Biển Báo & Digital</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Biển Hiệu Cửa Hàng</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/da9615fb-54be-4832-a1cd-306925d897e7" 
+                             alt="Shop Sign" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-black rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/da9615fb-54be-4832-a1cd-306925d897e7" 
-                                 alt="Biển hiệu" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Biển hiệu</h4>
-                        <p class="text-xs text-gray-400">Shop sign</p>
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Website Header</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/76c5154c-fd82-42b9-9e58-1d8a6ba0c1f0" 
+                             alt="Website Header" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
+                </div>
+            </div>
 
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-white rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/38c853e7-b3c7-4c6c-9328-565a5bd22973" 
-                                 alt="Đồng phục" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Đồng phục</h4>
-                        <p class="text-xs text-gray-400">Uniform nhân viên</p>
+            <!-- Uniform & Vehicles -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold mb-6 serif-font">Đồng Phục & Phương Tiện</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Đồng Phục Nhân Viên</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/38c853e7-b3c7-4c6c-9328-565a5bd22973" 
+                             alt="Uniform" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
-
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-white rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/d13657dd-6d2b-41c5-a7cb-cb1db34d7064" 
-                                 alt="Xe giao hàng" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Xe giao hàng</h4>
-                        <p class="text-xs text-gray-400">Vehicle branding</p>
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Xe Giao Hàng</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/d13657dd-6d2b-41c5-a7cb-cb1db34d7064" 
+                             alt="Delivery Vehicle" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
                 </div>
             </div>
 
             <!-- Packaging -->
             <div class="mb-12">
-                <h3 class="text-2xl font-semibold brand-gold mb-6">
-                    <i class="fas fa-box mr-2"></i>
-                    Packaging
-                </h3>
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="card rounded-lg p-4">
-                        <div class="bg-black rounded-lg p-4 mb-3">
-                            <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/37126574-b40e-4281-be42-b021461cbb5e" 
-                                 alt="Hộp đựng sản phẩm" 
-                                 class="thumbnail w-full h-auto cursor-pointer hover:opacity-80 transition-opacity"
-                                 onclick="openModal(this.src)">
-                        </div>
-                        <h4 class="font-semibold text-sm">Hộp đựng sản phẩm</h4>
-                        <p class="text-xs text-gray-400">Packaging sang trọng cho sản phẩm tang lễ</p>
+                <h3 class="text-2xl font-bold mb-6 serif-font">Bao Bì Sản Phẩm</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid-item">
+                        <h4 class="font-semibold mb-2">Hộp Đựng Sản Phẩm</h4>
+                        <img src="https://cdn1.genspark.ai/user-upload-image/gpt_image_edited/37126574-b40e-4281-be42-b021461cbb5e" 
+                             alt="Packaging" 
+                             class="w-full rounded-lg thumbnail"
+                             onclick="openLightbox(this.src)">
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Usage Guidelines -->
-        <section class="mb-16">
+    <div class="section-divider"></div>
+
+    <!-- Brand Guidelines Section -->
+    <section id="guidelines" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold brand-gold mb-4">Hướng Dẫn Sử Dụng</h2>
-                <p class="text-lg text-gray-300">Quy chuẩn và nguyên tắc khi sử dụng thương hiệu</p>
+                <h2 class="text-3xl md:text-4xl font-bold serif-font mb-4">
+                    Quy Chuẩn Thương Hiệu
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Hướng dẫn chi tiết về cách sử dụng logo và thương hiệu một cách chính xác
+                </p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="card rounded-lg p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-check-circle text-green-500 text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">Nên làm</h3>
+            <!-- Color Palette -->
+            <div class="mb-12">
+                <div class="grid-item">
+                    <h3 class="text-xl font-bold mb-4 serif-font">Bảng Màu Chính</h3>
+                    <div class="color-palette">
+                        <div class="color-swatch golden-swatch">
+                            <div>
+                                <div>Vàng</div>
+                                <div>#D4AF37</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch black-swatch">
+                            <div>
+                                <div>Đen</div>
+                                <div>#1A1A1A</div>
+                            </div>
+                        </div>
+                        <div class="color-swatch white-swatch">
+                            <div>
+                                <div>Trắng</div>
+                                <div>#FFFFFF</div>
+                            </div>
+                        </div>
                     </div>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-                            <span>Sử dụng đúng màu sắc chính thức (vàng #D4AF37, đen #000000)</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-                            <span>Duy trì tỷ lệ logo chính xác khi phóng to/thu nhỏ</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-                            <span>Đảm bảo khoảng cách tối thiểu xung quanh logo</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check text-green-500 mr-2 mt-1"></i>
-                            <span>Sử dụng phiên bản logo phù hợp với nền</span>
-                        </li>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="mb-12">
+                <div class="grid-item">
+                    <h3 class="text-xl font-bold mb-4 serif-font">Typography</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Font Chính</h4>
+                            <p class="serif-font text-2xl brand-gold">Playfair Display</p>
+                            <p class="text-sm text-gray-600">Sử dụng cho tiêu đề, logo text</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Font Phụ</h4>
+                            <p class="text-2xl">Inter</p>
+                            <p class="text-sm text-gray-600">Sử dụng cho nội dung, paragraph</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usage Rules -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="grid-item">
+                    <h3 class="text-xl font-bold mb-4 serif-font text-green-600">
+                        <i class="fas fa-check-circle mr-2"></i>Được Phép
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Sử dụng logo trên nền đen hoặc nền tối</li>
+                        <li>• Sử dụng phiên bản đảo ngược trên nền sáng</li>
+                        <li>• Giữ tỷ lệ logo khi thay đổi kích thước</li>
+                        <li>• Sử dụng các biến thể đã được phê duyệt</li>
+                        <li>• Đảm bảo khoảng cách an toàn xung quanh logo</li>
                     </ul>
                 </div>
 
-                <div class="card rounded-lg p-6">
-                    <div class="flex items-center mb-4">
-                        <i class="fas fa-times-circle text-red-500 text-2xl mr-3"></i>
-                        <h3 class="text-xl font-semibold">Không nên làm</h3>
-                    </div>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mr-2 mt-1"></i>
-                            <span>Thay đổi màu sắc hoặc font chữ của logo</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mr-2 mt-1"></i>
-                            <span>Biến dạng, xoay hoặc nghiêng logo</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mr-2 mt-1"></i>
-                            <span>Đặt logo trên nền có độ tương phản thấp</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-times text-red-500 mr-2 mt-1"></i>
-                            <span>Sử dụng logo có chất lượng thấp, mờ</span>
-                        </li>
+                <div class="grid-item">
+                    <h3 class="text-xl font-bold mb-4 serif-font text-red-600">
+                        <i class="fas fa-times-circle mr-2"></i>Không Được Phép
+                    </h3>
+                    <ul class="space-y-2 text-gray-600">
+                        <li>• Thay đổi màu sắc logo tùy ý</li>
+                        <li>• Méo mó, kéo dãn logo</li>
+                        <li>• Sử dụng logo trên nền có độ tương phản thấp</li>
+                        <li>• Thêm hiệu ứng, bóng đổ không được phê duyệt</li>
+                        <li>• Sử dụng logo quá nhỏ (dưới 80px chiều rộng)</li>
                     </ul>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <!-- Contact Information -->
+            <div class="mt-12">
+                <div class="grid-item text-center">
+                    <h3 class="text-xl font-bold mb-4 serif-font">Thông Tin Liên Hệ</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <i class="fas fa-phone text-2xl brand-gold mb-2"></i>
+                            <p class="font-semibold">Hotline</p>
+                            <p class="text-gray-600">0123 456 789</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-envelope text-2xl brand-gold mb-2"></i>
+                            <p class="font-semibold">Email</p>
+                            <p class="text-gray-600">info@anlacviet.com</p>
+                        </div>
+                        <div>
+                            <i class="fas fa-map-marker-alt text-2xl brand-gold mb-2"></i>
+                            <p class="font-semibold">Địa Chỉ</p>
+                            <p class="text-gray-600">Hà Nội, Việt Nam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-black border-t-2 border-brand-gold py-8">
-        <div class="container mx-auto px-6">
+    <footer class="brand-bg-dark text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="flex items-center justify-center mb-4">
-                    <img src="https://page1.genspark.site/v1/base64_upload/3f3a07c0062f775247dfea39136ac7e4" alt="An Lạc Việt Logo" class="h-8 w-auto mr-3">
-                    <span class="text-xl font-bold brand-gold">An Lạc Việt</span>
-                </div>
-                <p class="text-gray-400 mb-4">Kho Vật Tư Tang Lễ</p>
-                <div class="flex justify-center space-x-6 text-sm text-gray-400">
-                    <div class="flex items-center">
-                        <i class="fas fa-phone mr-2"></i>
-                        <span>0123 456 789</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-envelope mr-2"></i>
-                        <span>info@anlacviet.com</span>
-                    </div>
-                    <div class="flex items-center">
-                        <i class="fas fa-map-marker-alt mr-2"></i>
-                        <span>123 Đường ABC, Quận XYZ, TP.HCM</span>
-                    </div>
-                </div>
-                <div class="mt-6 pt-6 border-t border-gray-800">
-                    <p class="text-sm text-gray-500">
-                        © 2024 An Lạc Việt - Kho Vật Tư Tang Lễ. Bản quyền thuộc về An Lạc Việt.
-                    </p>
-                </div>
+                <img src="https://page1.genspark.site/v1/base64_upload/3f3a07c0062f775247dfea39136ac7e4" 
+                     alt="An Lạc Việt Logo" 
+                     class="mx-auto mb-4 max-w-xs w-full">
+                <p class="text-gray-400 mb-4">
+                    © 2024 An Lạc Việt. Tất cả quyền được bảo lưu.
+                </p>
+                <p class="text-gray-500 text-sm">
+                    "Như cánh chim Lạc Việt, chúng tôi mang đến sự bình an cho những người thân yêu"
+                </p>
             </div>
         </div>
     </footer>
 
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Logo">
+    </div>
+
     <script>
-        // Modal functionality
-        function openModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'block';
-            modalImg.src = imageSrc;
+        // Lightbox functionality
+        function openLightbox(src) {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = src;
+            document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
 
-        // Close modal when clicking outside the image
-        window.onclick = function(event) {
-            const modal = document.getElementById('imageModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
+        // Close lightbox when clicking outside the image
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
             }
-        }
+        });
 
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
+        // Close lightbox with ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
             }
         });
 
@@ -645,14 +789,26 @@
             });
         });
 
-        // Add scroll effect to navigation
+        // Add active class to navigation links
         window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.classList.add('bg-opacity-95');
-            } else {
-                header.classList.remove('bg-opacity-95');
-            }
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('brand-gold');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('brand-gold');
+                }
+            });
         });
     </script>
 </body>
